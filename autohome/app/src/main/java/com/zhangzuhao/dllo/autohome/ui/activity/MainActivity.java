@@ -1,7 +1,9 @@
-package com.zhangzuhao.dllo.autohome;
+package com.zhangzuhao.dllo.autohome.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.zhangzuhao.dllo.autohome.R;
 
 public class MainActivity extends AppCompatActivity {
 
