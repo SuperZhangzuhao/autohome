@@ -20,6 +20,7 @@
         android:orientation="horizontal"
         android:layout_weight="1">
         <RadioGroup
+            android:id="@+id/main_rg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">

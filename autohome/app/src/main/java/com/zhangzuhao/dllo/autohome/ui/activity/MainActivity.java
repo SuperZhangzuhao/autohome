@@ -1,11 +1,17 @@
 package com.zhangzuhao.dllo.autohome.ui.activity;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.ui.fragment.FindFragment;
@@ -14,8 +20,11 @@ import com.zhangzuhao.dllo.autohome.ui.fragment.ForumFragment;
 import com.zhangzuhao.dllo.autohome.ui.fragment.MeFragment;
 import com.zhangzuhao.dllo.autohome.ui.fragment.RecommendFragment;
 
-public class MainActivity extends AbsBaseActivity implements CompoundButton.OnCheckedChangeListener {
+
+public class MainActivity extends AbsBaseActivity {
     private RadioButton recommendRb, forumRb, findcarRb, findRb, meRb;
+    private RadioGroup radioGroup;
+
 
     @Override
     protected int setLayout() {
@@ -29,41 +38,43 @@ public class MainActivity extends AbsBaseActivity implements CompoundButton.OnCh
         findcarRb = (RadioButton) findViewById(R.id.findcar_rb);
         findRb = (RadioButton) findViewById(R.id.find_rb);
         meRb = (RadioButton) findViewById(R.id.me_rb);
+        radioGroup = (RadioGroup) findViewById(R.id.main_rg);
 
-        recommendRb.setOnCheckedChangeListener(this);
-        forumRb.setOnCheckedChangeListener(this);
-        findcarRb.setOnCheckedChangeListener(this);
-        findRb.setOnCheckedChangeListener(this);
-        meRb.setOnCheckedChangeListener(this);
 
+        /**
+         * GadioGroup的点击事件 , 替换占位布局
+         */
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                switch (checkedId) {
+                    case R.id.recommend_rb:
+                        ft.replace(R.id.main_fl, new RecommendFragment());
+                        break;
+                    case R.id.forum_rb:
+                        ft.replace(R.id.main_fl, new ForumFragment());
+                        break;
+                    case R.id.findcar_rb:
+                        ft.replace(R.id.main_fl, new FindcarFragment());
+                        break;
+                    case R.id.find_rb:
+                        ft.replace(R.id.main_fl, new FindFragment());
+                        break;
+                    case R.id.me_rb:
+                        ft.replace(R.id.main_fl, new MeFragment());
+                        break;
+                }
+                ft.commit();
+            }
+        });
     }
 
     @Override
     protected void initDatas() {
 
+
     }
-     //  点击替换Fragment
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        FragmentManager fm  = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        switch (buttonView.getId()){
-            case R.id.recommend_rb://推荐
-               ft.replace(R.id.main_fl , new RecommendFragment());
-                break;
-            case R.id.forum_rb: //论坛
-                ft.replace(R.id.main_fl , new ForumFragment());
-                break;
-            case R.id.findcar_rb: //找车
-                ft.replace(R.id.main_fl , new FindcarFragment());
-                break;
-            case R.id.find_rb:   //发现
-                ft.replace(R.id.main_fl , new FindFragment());
-                break;
-            case R.id.me_rb:   //我
-                ft.replace(R.id.main_fl , new MeFragment());
-                break;
-        }
-        ft.commit();
-    }
+
 }
