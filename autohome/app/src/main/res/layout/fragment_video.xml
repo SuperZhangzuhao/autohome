@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:orientation="horizontal"
+    android:layout_weight="1">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="视频"
-        android:textSize="100sp"/>
+        android:text="全部"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/zhankai"
+        android:layout_marginLeft="5dp"/>
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#BEBEBE"/>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="11">
+        <ListView
+            android:id="@+id/video_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#BEBEBE"
+            android:dividerHeight="1dp"/>
+    </LinearLayout>
 
 </LinearLayout>

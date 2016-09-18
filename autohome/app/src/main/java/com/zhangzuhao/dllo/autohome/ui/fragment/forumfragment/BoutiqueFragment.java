@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 精品推荐的fragment
  */
 public class BoutiqueFragment extends AbsBaseFragment {
 
@@ -26,7 +27,6 @@ public class BoutiqueFragment extends AbsBaseFragment {
     private List<String> datas;
     private RecyclerBoutiqueAadapter rbAdapter;
     private ImageView menuImg;
-
 
     protected int setLayout() {
         return R.layout.fragment_boutique;
@@ -38,14 +38,17 @@ public class BoutiqueFragment extends AbsBaseFragment {
         menuImg = byView(R.id.boutique_menuimg);
         rbAdapter = new RecyclerBoutiqueAadapter(context);
         recyclerView.setAdapter(rbAdapter);
-
     }
             protected void initDatas () {
-            //设置RecyclerView布局
+                /**
+                 * 设置RecyclerView布局
+                 */
             LinearLayoutManager llm = new LinearLayoutManager(context);
             llm.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerView.setLayoutManager(llm);
-            //构造数据
+                /**
+                 * 构造数据
+                 */
             datas = new ArrayList<>();
                 datas.add("全部");
                 datas.add("美人日");
@@ -86,7 +89,9 @@ public class BoutiqueFragment extends AbsBaseFragment {
                 datas.add("海外游记");
                 datas.add("沧海遗珠");
             rbAdapter.setDatas(datas);
-                //菜单的点击事件
+                /**
+                 * 菜单的点击事件
+                 */
                 menuImg.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -94,7 +99,10 @@ public class BoutiqueFragment extends AbsBaseFragment {
                     }
                 });
         }
-    //点击打开抽屉  滑动不打开抽屉
+
+    /**
+     * 点击打开抽屉  滑动不打开抽屉
+     */
     private void initMenu() {
     }
 }

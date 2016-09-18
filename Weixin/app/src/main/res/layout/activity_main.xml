@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.zhangzuhao.dllo.weixin.RelativalayoutBottom
+            android:id="@+id/weixin"
+            style="@style/myRelative"
+            android:background="#fff">
+            <ImageView
+                android:id="@+id/iv"
+
+                style="@style/myImageView"
+                android:background="@mipmap/ic_menu_start_conversation"/>
+            <TextView
+                android:id="@+id/tv"
+                style="@style/myTextView"
+                android:text="微信"
+                android:layout_below="@id/iv"
+                android:layout_alignRight="@id/iv"
+                android:layout_alignLeft="@id/iv"/>
+
+        </com.zhangzuhao.dllo.weixin.RelativalayoutBottom>
+
+        <com.zhangzuhao.dllo.weixin.RelativalayoutBottom
+            android:id="@+id/contacts"
+            style="@style/myRelative"
+            android:background="#fff">
+            <ImageView
+                android:id="@+id/iv"
+                style="@style/myImageView"
+                android:background="@mipmap/ic_menu_friendslist"/>
+            <TextView
+                android:id="@+id/tv"
+                style="@style/myTextView"
+                android:text="通讯录"
+                android:layout_below="@id/iv"
+                android:layout_alignRight="@id/iv"
+                android:layout_alignLeft="@id/iv"/>
+        </com.zhangzuhao.dllo.weixin.RelativalayoutBottom>
+    </LinearLayout>
+</LinearLayout>

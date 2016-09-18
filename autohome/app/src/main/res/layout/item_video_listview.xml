@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5">
+        <ImageView
+            android:id="@+id/video_item_smallimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/video_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:singleLine="false"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_weight="0.4">
+
+            <TextView
+                android:id="@+id/video_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016-09-08"/>
+            <TextView
+                android:id="@+id/video_item_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="播放"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/video_item_playcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1235"
+                android:layout_toLeftOf="@id/video_item_play"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

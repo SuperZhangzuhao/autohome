@@ -5,6 +5,7 @@ import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 我的fragment
  */
 public class MeMeFragment extends AbsBaseFragment {
     @Override
@@ -14,11 +15,8 @@ public class MeMeFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-
     }
-
     @Override
     protected void initDatas() {
-
     }
 }

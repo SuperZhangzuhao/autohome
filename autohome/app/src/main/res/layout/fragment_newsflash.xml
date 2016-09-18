@@ -1,15 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_newsflsh_drawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="快报"
-        android:textSize="100sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/newsflash_top_bandtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="全部品牌" />
+
+                <ImageView
+                    android:id="@+id/newsflash_top_levelimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/newsflash_top_bandtv"
+                    android:src="@mipmap/zhankai" />
+
+                <TextView
+                    android:id="@+id/newsflash_top_leveltv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/newsflash_top_levelimg"
+                    android:text="全部级别" />
+
+                <ImageView
+                    android:id="@+id/newsflash_top_bandimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/newsflash_top_leveltv"
+                    android:src="@mipmap/zhankai" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BEBEBE" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10">
+                <ListView
+                    android:id="@+id/newsflash_listview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:divider="#BEBEBE"
+                    android:dividerHeight="1dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+<LinearLayout
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:background="#fff"
+    android:orientation="vertical">
+    <ListView
+        android:id="@+id/drawer_newsflash_listview"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="#BEBEBE"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

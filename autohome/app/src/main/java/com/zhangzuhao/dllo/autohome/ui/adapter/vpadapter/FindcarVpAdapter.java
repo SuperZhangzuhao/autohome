@@ -8,11 +8,12 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 找车界面 ViewPager适配器
  */
-public class FindcarVpAdapter extends FragmentPagerAdapter {
+public class FindCarVpAdapter extends FragmentPagerAdapter {
     private List<Fragment> findCarFragments ;
 
-    public FindcarVpAdapter(FragmentManager fm , List<Fragment> findCarFragments) {
+    public FindCarVpAdapter(FragmentManager fm , List<Fragment> findCarFragments) {
         super(fm);
         this.findCarFragments = findCarFragments;
     }

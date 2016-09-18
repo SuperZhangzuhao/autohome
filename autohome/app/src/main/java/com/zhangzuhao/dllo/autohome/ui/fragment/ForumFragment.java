@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 论坛的fragment
  */
 public class ForumFragment extends AbsBaseFragment {
     private TabLayout forumTl;

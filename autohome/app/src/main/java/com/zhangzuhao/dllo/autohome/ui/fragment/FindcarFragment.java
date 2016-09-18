@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.zhangzuhao.dllo.autohome.R;
-import com.zhangzuhao.dllo.autohome.ui.adapter.vpadapter.FindcarVpAdapter;
+import com.zhangzuhao.dllo.autohome.ui.adapter.vpadapter.FindCarVpAdapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.findcarfragment.BrandFragment;
 import com.zhangzuhao.dllo.autohome.ui.fragment.findcarfragment.DepreciateFragment;
 import com.zhangzuhao.dllo.autohome.ui.fragment.findcarfragment.ScreenFragment;
@@ -16,11 +16,12 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ *找车的fragment
  */
 public class FindcarFragment extends AbsBaseFragment {
     private TabLayout findcarTl ;
     private ViewPager findcarVp ;
-    private FindcarVpAdapter  findcarVpAdapter ;
+    private FindCarVpAdapter findcarVpAdapter ;
     private List<Fragment> findCarFragments ;
     @Override
     protected int setLayout() {
@@ -40,7 +41,7 @@ public class FindcarFragment extends AbsBaseFragment {
         findCarFragments.add(new ScreenFragment());
         findCarFragments.add(new DepreciateFragment());
         findCarFragments.add(new UsedcarFragment());
-        findcarVpAdapter = new FindcarVpAdapter(getChildFragmentManager() , findCarFragments);
+        findcarVpAdapter = new FindCarVpAdapter(getChildFragmentManager() , findCarFragments);
         findcarVp.setAdapter(findcarVpAdapter);
         findcarTl.setupWithViewPager(findcarVp);
         findcarTl.setTabMode(TabLayout.MODE_SCROLLABLE);

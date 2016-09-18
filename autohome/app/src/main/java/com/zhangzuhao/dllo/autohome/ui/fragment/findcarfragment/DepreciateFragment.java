@@ -5,6 +5,7 @@ import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ *降价的fragment
  */
 public class DepreciateFragment extends AbsBaseFragment {
     @Override
@@ -14,9 +15,7 @@ public class DepreciateFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-
     }
-
     @Override
     protected void initDatas() {
 

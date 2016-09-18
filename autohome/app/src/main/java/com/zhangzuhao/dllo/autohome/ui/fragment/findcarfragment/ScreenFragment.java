@@ -5,6 +5,7 @@ import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ *筛选的fragment
  */
 public class ScreenFragment extends AbsBaseFragment {
     @Override
@@ -14,9 +15,7 @@ public class ScreenFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-
     }
-
     @Override
     protected void initDatas() {
 

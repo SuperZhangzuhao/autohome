@@ -1,72 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     android:id="@+id/boutique_menu_dl"
-    android:layout_height="match_parent">
-
-<FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <LinearLayout
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="right"
         android:background="#E0EEE0"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="0dp"
             android:layout_weight="1">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                >
+                android:gravity="center">
+
                 <TextView
                     android:id="@+id/boutique_menu_headtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="栏目分类"
                     android:layout_marginLeft="85dp"
-                    android:textSize="15sp"
-                    />
+                    android:text="栏目分类"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/boutique_menu_closetv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="关闭"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="15sp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"/>
+                    android:gravity="center_vertical"
+                    android:text="关闭"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="0dp"
-            android:layout_weight="11"
-            >
+            android:layout_weight="11">
 
             <ListView
                 android:id="@+id/boutique_menu_listview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:dividerHeight="1dp"
                 android:divider="#BEBEBE"
-                />
+                android:dividerHeight="1dp" />
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
-
-
 
 </android.support.v4.widget.DrawerLayout>

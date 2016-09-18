@@ -10,43 +10,43 @@
     android:layout_height="0dp"
     android:layout_weight="10.5">
     <FrameLayout
-        android:id="@+id/main_fl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    android:id="@+id/main_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:layout_weight="1">
         <RadioGroup
-            android:id="@+id/main_rg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
             <RadioButton
-                android:id="@+id/recommend_rb"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:background="@drawable/recommend"
+            android:id="@+id/recommend_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/recommend"
                 />
             <RadioButton
-                android:id="@+id/forum_rb"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:layout_weight="1"
-                android:background="@drawable/forum"
+            android:id="@+id/forum_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:layout_weight="1"
+            android:background="@drawable/forum"
                 />
             <RadioButton
-                android:id="@+id/findcar_rb"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:background="@drawable/findcar"
+            android:id="@+id/findcar_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/findcar"
                 />
             <RadioButton
                 android:id="@+id/find_rb"

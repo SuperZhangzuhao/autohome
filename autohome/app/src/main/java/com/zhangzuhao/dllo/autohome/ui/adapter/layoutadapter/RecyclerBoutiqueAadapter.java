@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/12.
+ *精品推荐RecyclerView的适配器
  */
 public class RecyclerBoutiqueAadapter  extends RecyclerView.Adapter<RecyclerBoutiqueAadapter.MyViewHolder> {
     private List<String> datas;
@@ -23,12 +24,10 @@ public class RecyclerBoutiqueAadapter  extends RecyclerView.Adapter<RecyclerBout
     public void setOnRvItemClick(OnRvItemClick onRvItemClick) {
         this.onRvItemClick = onRvItemClick;
     }
-
     public void setDatas(List<String>datas){
         this.datas = datas;
         notifyDataSetChanged();
     }
-
     public RecyclerBoutiqueAadapter(Context context) {
         this.context = context;
     }
@@ -39,7 +38,6 @@ public class RecyclerBoutiqueAadapter  extends RecyclerView.Adapter<RecyclerBout
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
-
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.boutiqueTv.setText(datas.get(position));
@@ -54,7 +52,6 @@ public class RecyclerBoutiqueAadapter  extends RecyclerView.Adapter<RecyclerBout
                 }
             }
         });
-
     }
 
     @Override
