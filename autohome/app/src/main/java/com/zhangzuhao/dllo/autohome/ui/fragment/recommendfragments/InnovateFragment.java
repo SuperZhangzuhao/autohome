@@ -5,6 +5,7 @@ import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 优创界面的fragment
  */
 public class InnovateFragment extends AbsBaseFragment {
     @Override

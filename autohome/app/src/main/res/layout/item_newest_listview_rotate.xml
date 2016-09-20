@@ -6,7 +6,7 @@
 <!--ListView的第一个行布局放轮播图-->
   <FrameLayout
       android:layout_width="match_parent"
-      android:layout_height="300dp">
+      android:layout_height="195dp">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/item_newest_listview_rotate_vp"

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by dllo on 16/9/14.
  * 新闻的网络接口实体类
  */
-public class NewsListViewBean  {
+public class NewsListViewBean {
 
     /**
      * rowcount : 34234

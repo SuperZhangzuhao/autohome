@@ -61,6 +61,7 @@ public class NewestRotateViewPagerAdapter extends PagerAdapter {
         imageView.setImageResource(datas.get(newPosition).getImgId());
         rotateBean = datas.get(newPosition);
         Glide.with(context).load(rotateBean.getImgUrl()).into(imageView);
+        container.addView(convertView);
         return convertView;
     }
 
