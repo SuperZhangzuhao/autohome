@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class DrawerNewsFlashAdapter extends BaseAdapter {
     private Context context;
-    private List<DrawerNewsFlashBean>datas;
+    private List<DrawerNewsFlashBean> datas;
 
     public DrawerNewsFlashAdapter(Context context) {
         this.context = context;
@@ -31,12 +31,12 @@ public class DrawerNewsFlashAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return datas != null&&datas.size()> 0 ? datas.size() : 0;
+        return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return datas != null && datas.size()>0? datas.get(position) : null;
+        return datas != null && datas.size() > 0 ? datas.get(position) : null;
     }
 
     @Override
@@ -47,20 +47,22 @@ public class DrawerNewsFlashAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DrawerHolder holder = null;
-        if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_drawer_newsflash_listview , parent , false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_drawer_newsflash_listview, parent, false);
             holder = new DrawerHolder(convertView);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (DrawerHolder) convertView.getTag();
         }
         DrawerNewsFlashBean bean = (DrawerNewsFlashBean) getItem(position);
         holder.textView.setText(bean.getStr());
         return convertView;
     }
-    class DrawerHolder{
-        private TextView textView ;
-        public DrawerHolder(View view){
+
+    class DrawerHolder {
+        private TextView textView;
+
+        public DrawerHolder(View view) {
             textView = (TextView) view.findViewById(R.id.drawer_newsflash_item_tv);
         }
     }

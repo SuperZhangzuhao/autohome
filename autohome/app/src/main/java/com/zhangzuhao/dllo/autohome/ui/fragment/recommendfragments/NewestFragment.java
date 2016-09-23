@@ -9,21 +9,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.model.bean.NewestListViewBean;
+import com.zhangzuhao.dllo.autohome.model.bean.RotateBean;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyInstance;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyResult;
 import com.zhangzuhao.dllo.autohome.ui.adapter.NewestListViewAdapter;
-import com.zhangzuhao.dllo.autohome.ui.adapter.NewsListViewAdapter;
 import com.zhangzuhao.dllo.autohome.ui.adapter.vpadapter.NewestRotateViewPagerAdapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
-import com.zhangzuhao.dllo.autohome.utils.RotateBean;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by dllo on 16/9/10.
@@ -41,15 +38,17 @@ public class NewestFragment extends AbsBaseFragment {
      */
     private ViewPager viewPager;
     private NewestRotateViewPagerAdapter newestRotateViewPagerAdapter;
-    private List<RotateBean>datas;
+    private List<RotateBean> datas;
     private LinearLayout pointLl;
     private Handler handler;
-    private boolean isRotate = false ;
+    private boolean isRotate = false;
     private Runnable rotateRunnable;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_newest;
     }
+
     @Override
     protected void initViews() {
         /**
@@ -60,6 +59,7 @@ public class NewestFragment extends AbsBaseFragment {
         newestRotateViewPagerAdapter = new NewestRotateViewPagerAdapter(context);
         mListView.setAdapter(newestListViewAdapter);
     }
+
     @Override
     protected void initDatas() {
         /**
@@ -69,10 +69,11 @@ public class NewestFragment extends AbsBaseFragment {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
-                NewestListViewBean  bean = gson.fromJson(resultStr , NewestListViewBean.class);
+                NewestListViewBean bean = gson.fromJson(resultStr, NewestListViewBean.class);
                 List<NewestListViewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
                 newestListViewAdapter.setDatas(datas);
             }
+
             @Override
             public void failure() {
             }
@@ -80,7 +81,7 @@ public class NewestFragment extends AbsBaseFragment {
         /**
          * 添加ListView的头布局
          */
-        View headView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_rotate , mListView,false);
+        View headView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_rotate, mListView, false);
         viewPager = (ViewPager) headView.findViewById(R.id.item_newest_listview_rotate_vp);
         pointLl = (LinearLayout) headView.findViewById(R.id.item_newest_listview_rotate_point_container);
         mListView.addHeaderView(headView);
@@ -90,9 +91,9 @@ public class NewestFragment extends AbsBaseFragment {
          */
         buildDatas();
         Log.d("www", "为ViewPager创建数据");
-        newestRotateViewPagerAdapter = new NewestRotateViewPagerAdapter(datas ,context);
+        newestRotateViewPagerAdapter = new NewestRotateViewPagerAdapter(datas, context);
         viewPager.setAdapter(newestRotateViewPagerAdapter);
-        viewPager.setCurrentItem(datas.size() *100);
+        viewPager.setCurrentItem(datas.size() * 100);
         /**
          * 开始轮播
          */
@@ -107,6 +108,7 @@ public class NewestFragment extends AbsBaseFragment {
          */
         changePoints();
     }
+
     /**
      * 开始轮播
      */
@@ -117,25 +119,28 @@ public class NewestFragment extends AbsBaseFragment {
             public void run() {
                 int nowIndex = viewPager.getCurrentItem();
                 viewPager.setCurrentItem(++nowIndex);
-                if (isRotate){
-                    handler.postDelayed(rotateRunnable , 3000);
+                if (isRotate) {
+                    handler.postDelayed(rotateRunnable, 3000);
                 }
             }
         };
-        handler.postDelayed(rotateRunnable , 3000);
+        handler.postDelayed(rotateRunnable, 3000);
     }
+
     @Override
     public void onResume() {
         Log.d("NewestFragment", "onresume");
         super.onResume();
         isRotate = true;
     }
+
     @Override
     public void onPause() {
         Log.d("NewestFragment", "onpause");
         super.onPause();
         isRotate = false;
     }
+
     private void changePoints() {
         Log.d("www", "改变小圆点");
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -146,8 +151,8 @@ public class NewestFragment extends AbsBaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if (isRotate){
-                    for (int i = 0; i <datas.size() ; i++) {
+                if (isRotate) {
+                    for (int i = 0; i < datas.size(); i++) {
                         ImageView pointIv = (ImageView) pointLl.getChildAt(i);
                         pointIv.setImageResource(R.mipmap.point_white);
                     }
@@ -170,17 +175,17 @@ public class NewestFragment extends AbsBaseFragment {
         Log.d("www", "绘制小圆点");
         for (int i = 0; i < datas.size(); i++) {
             ImageView pointIv = new ImageView(context);
-            pointIv.setPadding(5,5,2,5);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50 , 50);
+            pointIv.setPadding(5, 5, 2, 5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
             pointIv.setLayoutParams(params);
             /**
              * 设置第0页的小圆点为灰色
              */
-        if (i == 0){
-            pointIv.setImageResource(R.mipmap.point_grey);
-        }else {
-            pointIv.setImageResource(R.mipmap.point_white);
-        }
+            if (i == 0) {
+                pointIv.setImageResource(R.mipmap.point_grey);
+            } else {
+                pointIv.setImageResource(R.mipmap.point_white);
+            }
             pointLl.addView(pointIv);
         }
     }

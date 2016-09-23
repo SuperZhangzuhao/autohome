@@ -19,13 +19,14 @@ import java.util.List;
  * 快报的listview的适配器
  */
 public class NewsFlashListViewAapter extends BaseAdapter {
-  private Context context ;
-  private List<NewsFlashListViewBean.ResultBean.ListBean>datas;
+    private Context context;
+    private List<NewsFlashListViewBean.ResultBean.ListBean> datas;
 
     public NewsFlashListViewAapter(Context context) {
         this.context = context;
 
     }
+
     public void setDatas(List<NewsFlashListViewBean.ResultBean.ListBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
@@ -49,27 +50,28 @@ public class NewsFlashListViewAapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         NewsFlashViewHolder mHolder = null;
-        if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_newsflash_listview , parent , false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_newsflash_listview, parent, false);
             mHolder = new NewsFlashViewHolder(convertView);
             convertView.setTag(mHolder);
-        }else {
+        } else {
             mHolder = (NewsFlashViewHolder) convertView.getTag();
         }
-        NewsFlashListViewBean.ResultBean.ListBean  mBean = datas.get(position);
-        if (mBean != null){
+        NewsFlashListViewBean.ResultBean.ListBean mBean = datas.get(position);
+        if (mBean != null) {
             mHolder.titleTv.setText(mBean.getTitle());
-            mHolder.reviewcountTv.setText(mBean.getReviewcount()+"");
+            mHolder.reviewcountTv.setText(mBean.getReviewcount() + "");
             mHolder.createtimeTv.setText(mBean.getCreatetime());
             Picasso.with(context).load(mBean.getBgimage()).into(mHolder.bgimageImg);
         }
         return convertView;
     }
 
-    class  NewsFlashViewHolder {
-        TextView titleTv , reviewcountTv , createtimeTv;
+    class NewsFlashViewHolder {
+        TextView titleTv, reviewcountTv, createtimeTv;
         ImageView bgimageImg;
-        public   NewsFlashViewHolder(View view){
+
+        public NewsFlashViewHolder(View view) {
             titleTv = (TextView) view.findViewById(R.id.newsflash_listview_item_title);
             reviewcountTv = (TextView) view.findViewById(R.id.newsflash_listview_item_reviewcount);
             createtimeTv = (TextView) view.findViewById(R.id.newsflash_listview_item_createTv);

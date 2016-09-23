@@ -22,11 +22,11 @@ import java.util.List;
  * 最新界面的ListView的适配器
  */
 public class NewestListViewAdapter extends BaseAdapter {
-    private List<NewestListViewBean.ResultBean.NewslistBean>datas;
+    private List<NewestListViewBean.ResultBean.NewslistBean> datas;
     private Context context;
 
     /**
-     *轮播图的行布局
+     * 轮播图的行布局
      */
     private static final int TYPE_ROTATE = 0;
     /**
@@ -50,7 +50,7 @@ public class NewestListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return datas != null && datas.size()> 0 ? datas.size() : 0;
+        return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
 
     @Override
@@ -68,12 +68,11 @@ public class NewestListViewAdapter extends BaseAdapter {
         int a = position;
         int b = datas.get(position).getMediatype();
         Log.d("xxx", "b:" + b);
-        if (a == 0){
+        if (a == 0) {
             return TYPE_ROTATE;
-        }
-        else if (b == 6){
+        } else if (b == 6) {
             return TYPE_THREEIMG;
-        }else {
+        } else {
             return TYPE_ONEIMG;
         }
 
@@ -86,30 +85,30 @@ public class NewestListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        RotateHolder holder = null ;
+        RotateHolder holder = null;
         OnePicHolder oneHolder = null;
         ThreePicHolder threeHolder = null;
         int type = getItemViewType(position);
-        if (convertView == null){
-            switch (type){
+        if (convertView == null) {
+            switch (type) {
                 case TYPE_ROTATE:
-                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_rotate , parent ,false);
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_rotate, parent, false);
                     holder = new RotateHolder(convertView);
                     convertView.setTag(holder);
                     break;
                 case TYPE_ONEIMG:
-                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_first , parent , false);
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_first, parent, false);
                     oneHolder = new OnePicHolder(convertView);
                     convertView.setTag(oneHolder);
                     break;
-                case TYPE_THREEIMG :
-                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_second , parent ,false);
+                case TYPE_THREEIMG:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_newest_listview_second, parent, false);
                     threeHolder = new ThreePicHolder(convertView);
                     convertView.setTag(threeHolder);
                     break;
             }
-        }else {
-            switch (type){
+        } else {
+            switch (type) {
                 case TYPE_ROTATE:
                     holder = (RotateHolder) convertView.getTag();
                     break;
@@ -123,20 +122,20 @@ public class NewestListViewAdapter extends BaseAdapter {
 
         NewestListViewBean.ResultBean.NewslistBean mbean = datas.get(position);
         Log.d("xxxxxx", "mbean:" + mbean);
-        if (mbean != null){
-            switch (type){
+        if (mbean != null) {
+            switch (type) {
                 case TYPE_ROTATE:
                     break;
                 case TYPE_ONEIMG:
                     oneHolder.titleTv.setText(mbean.getTitle());
                     oneHolder.timeTv.setText(mbean.getTime());
-                    oneHolder.countTv.setText(mbean.getReplycount()+"");
+                    oneHolder.countTv.setText(mbean.getReplycount() + "");
                     Picasso.with(context).load(mbean.getSmallpic()).into(oneHolder.smallImg);
                     break;
                 case TYPE_THREEIMG:
                     threeHolder.tTitleTv.setText(mbean.getTitle());
                     threeHolder.tTimeTv.setText(mbean.getTime());
-                    threeHolder.tCountTv.setText(mbean.getReplycount()+"");
+                    threeHolder.tCountTv.setText(mbean.getReplycount() + "");
                     Picasso.with(context).load("http://car2.autoimg.cn/cardfs/product/g9/M12/45/E3/t_autohomecar__wKjBzlfeZPmAHIYYAAS-81iPdh0340.jpg").into(threeHolder.leftImg);
                     Picasso.with(context).load("http://car3.autoimg.cn/cardfs/product/g13/M00/4C/E7/t_autohomecar__wKgH41feZPmAdvg6AASWSe8fgyI357.jpg").into(threeHolder.midlleImg);
                     Picasso.with(context).load("http://car2.autoimg.cn/cardfs/product/g9/M11/50/4D/t_autohomecar__wKgH31feZPiASCDuAASVAsDiw0M087.jpg").into(threeHolder.rightImg);
@@ -144,6 +143,7 @@ public class NewestListViewAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
     /**
      * 轮播图行布局
      */
@@ -154,26 +154,30 @@ public class NewestListViewAdapter extends BaseAdapter {
             viewPager = (ViewPager) view.findViewById(R.id.item_newest_listview_rotate_vp);
         }
     }
-        /**
-         * 一个图片的行布局
-         */
-        class OnePicHolder{
-            private TextView titleTv , timeTv , countTv;
-            private ImageView smallImg;
-            public OnePicHolder(View view){
-                titleTv = (TextView) view.findViewById(R.id.item_newest_listview_first_title);
-                timeTv = (TextView) view.findViewById(R.id.item_newest_listview_first_time);
-                countTv = (TextView) view.findViewById(R.id.item_newest_listview_first_count);
-                smallImg = (ImageView) view.findViewById(R.id.item_newest_listview_first_img);
-            }
+
+    /**
+     * 一个图片的行布局
+     */
+    class OnePicHolder {
+        private TextView titleTv, timeTv, countTv;
+        private ImageView smallImg;
+
+        public OnePicHolder(View view) {
+            titleTv = (TextView) view.findViewById(R.id.item_newest_listview_first_title);
+            timeTv = (TextView) view.findViewById(R.id.item_newest_listview_first_time);
+            countTv = (TextView) view.findViewById(R.id.item_newest_listview_first_count);
+            smallImg = (ImageView) view.findViewById(R.id.item_newest_listview_first_img);
         }
+    }
+
     /**
      * 三个图片的行布局
      */
-    class ThreePicHolder{
-        private TextView tTitleTv , tTimeTv , tCountTv;
-        private ImageView leftImg , midlleImg , rightImg;
-        public ThreePicHolder(View view){
+    class ThreePicHolder {
+        private TextView tTitleTv, tTimeTv, tCountTv;
+        private ImageView leftImg, midlleImg, rightImg;
+
+        public ThreePicHolder(View view) {
             tTitleTv = (TextView) view.findViewById(R.id.item_newest_listview_second_title);
             tTimeTv = (TextView) view.findViewById(R.id.item_newest_listview_second_time);
             tCountTv = (TextView) view.findViewById(R.id.item_newest_listview_second_count);

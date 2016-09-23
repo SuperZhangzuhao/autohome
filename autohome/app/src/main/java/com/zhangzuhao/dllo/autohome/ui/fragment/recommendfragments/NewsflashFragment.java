@@ -26,19 +26,20 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  * 推荐页面快报的Fragment
  */
-public class NewsflashFragment extends AbsBaseFragment  {
-    private TextView titleTv,reviewcountTv,createtimeTv ,allTv;
+public class NewsflashFragment extends AbsBaseFragment {
+    private TextView titleTv, reviewcountTv, createtimeTv, allTv;
     private ImageView bgimageImg;
     private ListView mListView;
     private NewsFlashListViewAapter mNewsFlashListViewAapter;
     private String newsflashUrl = "http://app.api.autohome.com.cn/autov5.0.0/news/fastnewslist-pm2-b0-l0-s20-lastid0.json";
     private DrawerLayout mDrawerlayout;
     private ListView drawerListView;
-    private List<DrawerNewsFlashBean>datas;
+    private List<DrawerNewsFlashBean> datas;
     private DrawerNewsFlashAdapter drawerAdapter;
+
     @Override
     protected int setLayout() {
-        return R.layout.fragment_newsflash ;
+        return R.layout.fragment_newsflash;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class NewsflashFragment extends AbsBaseFragment  {
         /**
          * 抽屉的相关初始化数据
          */
-        allTv  = byView(R.id.newsflash_top_leveltv);
+        allTv = byView(R.id.newsflash_top_leveltv);
         mDrawerlayout = byView(R.id.drawer_newsflsh_drawer);
         drawerListView = byView(R.id.drawer_newsflash_listview);
         drawerAdapter = new DrawerNewsFlashAdapter(context);
@@ -71,6 +72,7 @@ public class NewsflashFragment extends AbsBaseFragment  {
             }
         });
     }
+
     @Override
     protected void initDatas() {
         /**
@@ -81,10 +83,11 @@ public class NewsflashFragment extends AbsBaseFragment  {
             public void success(String resultStr) {
                 Log.d("net", resultStr);
                 Gson gson = new Gson();
-                NewsFlashListViewBean newsFlashListViewBean = gson.fromJson(resultStr , NewsFlashListViewBean.class);
-                List<NewsFlashListViewBean.ResultBean.ListBean>datas = newsFlashListViewBean.getResult().getList();
+                NewsFlashListViewBean newsFlashListViewBean = gson.fromJson(resultStr, NewsFlashListViewBean.class);
+                List<NewsFlashListViewBean.ResultBean.ListBean> datas = newsFlashListViewBean.getResult().getList();
                 mNewsFlashListViewAapter.setDatas(datas);
             }
+
             @Override
             public void failure() {
             }
@@ -98,6 +101,7 @@ public class NewsflashFragment extends AbsBaseFragment  {
          */
         attributeDrawer();
     }
+
     private void attributeDrawer() {
         mDrawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }

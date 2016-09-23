@@ -1,16 +1,16 @@
 package com.zhangzuhao.dllo.autohome.model.bean;
 
 /**
- * Created by dllo on 16/9/17.
- * 快报侧拉菜单的实体类
+ * Created by dllo on 16/9/22.
+ * 优创的Spinner的实体类
  */
-public class DrawerNewsFlashBean {
+public class InnovateSpinnerBean {
     private String str;
 
-    public DrawerNewsFlashBean() {
+    public InnovateSpinnerBean() {
     }
 
-    public DrawerNewsFlashBean(String str) {
+    public InnovateSpinnerBean(String str) {
         this.str = str;
     }
 

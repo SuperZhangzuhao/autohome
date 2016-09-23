@@ -19,7 +19,8 @@ import java.util.List;
 public class UseCarFragment extends AbsBaseFragment {
     private String Url = "http://app.api.autohome.com.cn/autov5.0.0/news/newslist-pm2-c0-nt82-p1-s20-l0.json";
     private ListView listview;
-    private UseCarListViewAdapter adapter ;
+    private UseCarListViewAdapter adapter;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_usecar;
@@ -41,12 +42,12 @@ public class UseCarFragment extends AbsBaseFragment {
         VolleyInstance.getmInstance().startRequest(Url, new VolleyResult() {
             @Override
             public void success(String resultStr) {
-                    Gson gson = new Gson();
-                    UseCarBean bean = gson.fromJson(resultStr , UseCarBean.class);
-                    List<UseCarBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
-                    adapter.setDatas(datas);
+                Gson gson = new Gson();
+                UseCarBean bean = gson.fromJson(resultStr, UseCarBean.class);
+                List<UseCarBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                adapter.setDatas(datas);
 
-                }
+            }
 
             @Override
             public void failure() {

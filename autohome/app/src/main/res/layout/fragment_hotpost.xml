@@ -3,9 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="热帖"
-        android:textSize="100sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#dedede"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="24小时内热门"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/hotpost_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#BEBEBE"
+        android:dividerHeight="1dp"/>
 </LinearLayout>

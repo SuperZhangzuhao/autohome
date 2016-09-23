@@ -17,17 +17,18 @@ import com.zhangzuhao.dllo.autohome.ui.activity.AbsBaseActivity;
  */
 public abstract class AbsBaseFragment extends Fragment {
 
-    protected Context context ;
+    protected Context context;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.context = context ;
+        this.context = context;
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout() , container , false);
+        return inflater.inflate(setLayout(), container, false);
     }
 
     @Override
@@ -47,25 +48,30 @@ public abstract class AbsBaseFragment extends Fragment {
          */
         initDatas();
     }
+
     protected abstract int setLayout();
+
     /**
      * 初始化数据
      */
     protected abstract void initViews();
+
     /**
      * 使用数据
      */
     protected abstract void initDatas();
+
     /**
-     *简化findviewbyid
+     * 简化findviewbyid
      */
-    protected <T extends View> T byView(int resId){
-        return (T)getView().findViewById(resId);
+    protected <T extends View> T byView(int resId) {
+        return (T) getView().findViewById(resId);
     }
+
     /**
      * 跳转不传值
      */
-   protected void goTo(Class<? extends AbsBaseActivity> to){
-       context.startActivity(new Intent(context , to));
-   }
+    protected void goTo(Class<? extends AbsBaseActivity> to) {
+        context.startActivity(new Intent(context, to));
+    }
 }

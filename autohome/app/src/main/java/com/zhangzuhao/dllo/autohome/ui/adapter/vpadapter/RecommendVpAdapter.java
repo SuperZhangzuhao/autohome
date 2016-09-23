@@ -14,12 +14,10 @@ import java.util.List;
 public class RecommendVpAdapter extends FragmentPagerAdapter {
     private List<Fragment>fragments ;
 
-
     public RecommendVpAdapter(FragmentManager fm , List<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }
-
 
     @Override
     public Fragment getItem(int position) {
@@ -30,6 +28,5 @@ public class RecommendVpAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragments.size();
     }
-
 
 }

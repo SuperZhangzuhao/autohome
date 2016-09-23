@@ -16,13 +16,14 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
- *找车的fragment
+ * 找车的fragment
  */
 public class FindcarFragment extends AbsBaseFragment {
-    private TabLayout findcarTl ;
-    private ViewPager findcarVp ;
-    private FindCarVpAdapter findcarVpAdapter ;
-    private List<Fragment> findCarFragments ;
+    private TabLayout findcarTl;
+    private ViewPager findcarVp;
+    private FindCarVpAdapter findcarVpAdapter;
+    private List<Fragment> findCarFragments;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_findcar;
@@ -30,8 +31,8 @@ public class FindcarFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-   findcarVp = byView(R.id.findcar_vp);
-   findcarTl = byView(R.id.findcar_tl);
+        findcarVp = byView(R.id.findcar_vp);
+        findcarTl = byView(R.id.findcar_tl);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class FindcarFragment extends AbsBaseFragment {
         findCarFragments.add(new ScreenFragment());
         findCarFragments.add(new DepreciateFragment());
         findCarFragments.add(new UsedcarFragment());
-        findcarVpAdapter = new FindCarVpAdapter(getChildFragmentManager() , findCarFragments);
+        findcarVpAdapter = new FindCarVpAdapter(getChildFragmentManager(), findCarFragments);
         findcarVp.setAdapter(findcarVpAdapter);
         findcarTl.setupWithViewPager(findcarVp);
         findcarTl.setTabMode(TabLayout.MODE_SCROLLABLE);

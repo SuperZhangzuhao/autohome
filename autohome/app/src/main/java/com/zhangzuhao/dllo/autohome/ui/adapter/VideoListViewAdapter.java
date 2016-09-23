@@ -19,11 +19,13 @@ import java.util.List;
  * 视频listview的实体类
  */
 public class VideoListViewAdapter extends BaseAdapter {
-    private Context context ;
-    private List<VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2>datas;
+    private Context context;
+    private List<VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2> datas;
+
     public VideoListViewAdapter(Context context) {
         this.context = context;
     }
+
     public void setDatas(List<VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2> datas) {
         this.datas = datas;
         notifyDataSetChanged();
@@ -31,12 +33,12 @@ public class VideoListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return datas != null && datas.size() > 0? datas.size() : 0;
+        return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return datas != null && datas.size() > 0? datas.size() : null;
+        return datas != null && datas.size() > 0 ? datas.size() : null;
     }
 
     @Override
@@ -47,26 +49,28 @@ public class VideoListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         VideoViewHolder holder = null;
-        if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_video_listview , parent , false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_video_listview, parent, false);
             holder = new VideoViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (VideoViewHolder) convertView.getTag();
         }
-        VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2  bean = datas.get(position);
-        if (bean != null){
+        VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2 bean = datas.get(position);
+        if (bean != null) {
             holder.titleTv.setText(bean.getTitle());
-            holder.countPalyTv.setText(bean.getPlaycount()+"");
+            holder.countPalyTv.setText(bean.getPlaycount() + "");
             holder.timeTv.setText(bean.getTime());
             Picasso.with(context).load(bean.getSmallimg()).into(holder.smallImg);
         }
         return convertView;
     }
-    class VideoViewHolder{
-        TextView titleTv , timeTv , countPalyTv;
-        ImageView smallImg ;
-        public  VideoViewHolder (View view){
+
+    class VideoViewHolder {
+        TextView titleTv, timeTv, countPalyTv;
+        ImageView smallImg;
+
+        public VideoViewHolder(View view) {
             titleTv = (TextView) view.findViewById(R.id.video_item_title);
             timeTv = (TextView) view.findViewById(R.id.video_item_time);
             countPalyTv = (TextView) view.findViewById(R.id.video_item_playcount);

@@ -19,8 +19,8 @@ import java.util.List;
  * 新闻ListView的适配器
  */
 public class NewsListViewAdapter extends BaseAdapter {
-    private Context context ;
-    private List<NewsListViewBean.ResultBean.NewslistBean>datas;
+    private Context context;
+    private List<NewsListViewBean.ResultBean.NewslistBean> datas;
 
     public NewsListViewAdapter(Context context) {
         this.context = context;
@@ -30,6 +30,7 @@ public class NewsListViewAdapter extends BaseAdapter {
         this.datas = datas;
         notifyDataSetChanged();
     }
+
     @Override
     public int getCount() {
         return datas != null && datas.size() > 0 ? datas.size() : 0;
@@ -39,33 +40,37 @@ public class NewsListViewAdapter extends BaseAdapter {
     public Object getItem(int position) {
         return datas != null && datas.size() > 0 ? datas.size() : null;
     }
+
     @Override
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         NewsViewHolder holder = null;
-        if (convertView == null ){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_news_listview , parent , false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_news_listview, parent, false);
             holder = new NewsViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (NewsViewHolder) convertView.getTag();
         }
         NewsListViewBean.ResultBean.NewslistBean bean = datas.get(position);
-        if (bean != null){
+        if (bean != null) {
             holder.titleTv.setText(bean.getTitle());
             holder.timeTv.setText(bean.getTime());
-            holder.replyTv.setText(bean.getReplycount()+"");
+            holder.replyTv.setText(bean.getReplycount() + "");
             Picasso.with(context).load(bean.getSmallpic()).into(holder.smallImg);
         }
         return convertView;
     }
-    class NewsViewHolder{
-        private TextView titleTv , timeTv , replyTv;
+
+    class NewsViewHolder {
+        private TextView titleTv, timeTv, replyTv;
         private ImageView smallImg;
-        public NewsViewHolder (View view){
+
+        public NewsViewHolder(View view) {
             titleTv = (TextView) view.findViewById(R.id.news_item_title);
             timeTv = (TextView) view.findViewById(R.id.news_item_time);
             replyTv = (TextView) view.findViewById(R.id.news_item_replycount);

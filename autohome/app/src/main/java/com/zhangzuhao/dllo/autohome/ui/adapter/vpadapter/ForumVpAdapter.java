@@ -13,7 +13,6 @@ import java.util.List;
 public class ForumVpAdapter extends FragmentPagerAdapter {
     private List<Fragment>fragments;
 
-
     public ForumVpAdapter(FragmentManager fm , List<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;

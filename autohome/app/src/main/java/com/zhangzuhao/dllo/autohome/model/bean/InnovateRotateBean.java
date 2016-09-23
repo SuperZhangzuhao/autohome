@@ -1,27 +1,27 @@
-package com.zhangzuhao.dllo.autohome.utils;
+package com.zhangzuhao.dllo.autohome.model.bean;
 
 import java.io.Serializable;
 
 /**
- * Created by dllo on 16/9/18.
- * ViewPager(轮播图)的实体类接口
+ * Created by dllo on 16/9/21.
+ * 创新的实体类
  */
-public class RotateBean implements Serializable {
+public class InnovateRotateBean implements Serializable {
     private int imgId;
     private String imgUrl;
 
-    public RotateBean() {
+    public InnovateRotateBean() {
     }
 
-    public RotateBean(String imgUrl) {
+    public InnovateRotateBean(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 
-    public RotateBean(int imgId) {
+    public InnovateRotateBean(int imgId) {
         this.imgId = imgId;
     }
 
-    public RotateBean(int imgId, String imgUrl) {
+    public InnovateRotateBean(int imgId, String imgUrl) {
         this.imgId = imgId;
         this.imgUrl = imgUrl;
     }
@@ -41,5 +41,4 @@ public class RotateBean implements Serializable {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
 }
