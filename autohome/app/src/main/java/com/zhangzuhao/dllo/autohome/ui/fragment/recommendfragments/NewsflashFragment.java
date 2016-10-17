@@ -1,10 +1,12 @@
 package com.zhangzuhao.dllo.autohome.ui.fragment.recommendfragments;
 
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.zhangzuhao.dllo.autohome.model.bean.DrawerNewsFlashBean;
 import com.zhangzuhao.dllo.autohome.model.bean.NewsFlashListViewBean;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyInstance;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyResult;
+import com.zhangzuhao.dllo.autohome.ui.activity.NewestDetailsActivity;
+import com.zhangzuhao.dllo.autohome.ui.activity.NewsFlashDetailsActivity;
 import com.zhangzuhao.dllo.autohome.ui.adapter.DrawerNewsFlashAdapter;
 import com.zhangzuhao.dllo.autohome.ui.adapter.NewsFlashListViewAapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
@@ -36,6 +40,7 @@ public class NewsflashFragment extends AbsBaseFragment {
     private ListView drawerListView;
     private List<DrawerNewsFlashBean> datas;
     private DrawerNewsFlashAdapter drawerAdapter;
+    private List<NewsFlashListViewBean.ResultBean.ListBean> list;
 
     @Override
     protected int setLayout() {
@@ -71,6 +76,27 @@ public class NewsflashFragment extends AbsBaseFragment {
                 mDrawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
             }
         });
+        /**
+         * "全部级别"抽屉的点击事件
+         */
+        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("NewsflashFragment", "抽屉的点击事件");
+            }
+        });
+        /**
+         * listview点击事件
+         */
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putString("key" , "http://cont.app.autohome.com.cn/autov5.0.0/content/News/fastnewscontent-n"+list.get(position).getId()+"-lastid0-o1.json");
+
+                goTo(context , NewsFlashDetailsActivity.class  , bundle);
+            }
+        });
     }
 
     @Override
@@ -84,8 +110,8 @@ public class NewsflashFragment extends AbsBaseFragment {
                 Log.d("net", resultStr);
                 Gson gson = new Gson();
                 NewsFlashListViewBean newsFlashListViewBean = gson.fromJson(resultStr, NewsFlashListViewBean.class);
-                List<NewsFlashListViewBean.ResultBean.ListBean> datas = newsFlashListViewBean.getResult().getList();
-                mNewsFlashListViewAapter.setDatas(datas);
+                list = newsFlashListViewBean.getResult().getList();
+                mNewsFlashListViewAapter.setDatas(list);
             }
 
             @Override

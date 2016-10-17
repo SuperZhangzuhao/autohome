@@ -8,7 +8,7 @@
     android:layout_height="0dp"
     android:orientation="horizontal"
     android:layout_weight="2">
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_innovate_listview_bigpic_headimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,8 +47,10 @@
         android:layout_weight="5">
         <ImageView
             android:id="@+id/item_innovate_listview_bigpic_bigmig"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             />
     </LinearLayout>
     <RelativeLayout
@@ -61,6 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:text="2016-05-05"
             />
         <TextView
@@ -69,11 +73,15 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="23"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_alignParentRight="true"/>
         <ImageView
             android:id="@+id/innovate_pinglunimg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_toLeftOf="@id/item_innovate_listview_bigpic_talkcount"
             android:src="@mipmap/pinglun"/>
         <TextView
@@ -81,11 +89,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_toLeftOf="@id/innovate_pinglunimg"
             android:layout_marginRight="15dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:src="@mipmap/zan"
             android:layout_toLeftOf="@id/item_innovate_listview_bigpic_zancount"/>
 

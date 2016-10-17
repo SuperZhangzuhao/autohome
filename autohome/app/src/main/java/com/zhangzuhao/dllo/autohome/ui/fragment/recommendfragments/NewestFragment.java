@@ -1,13 +1,16 @@
 package com.zhangzuhao.dllo.autohome.ui.fragment.recommendfragments;
 
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.zhangzuhao.dllo.autohome.R;
@@ -15,9 +18,12 @@ import com.zhangzuhao.dllo.autohome.model.bean.NewestListViewBean;
 import com.zhangzuhao.dllo.autohome.model.bean.RotateBean;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyInstance;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyResult;
+import com.zhangzuhao.dllo.autohome.ui.activity.NewestDetailsActivity;
 import com.zhangzuhao.dllo.autohome.ui.adapter.NewestListViewAdapter;
 import com.zhangzuhao.dllo.autohome.ui.adapter.vpadapter.NewestRotateViewPagerAdapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
+import com.zhangzuhao.dllo.autohome.view.OnRefreshListener;
+import com.zhangzuhao.dllo.autohome.view.RefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +32,16 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  * 最新界面的Fragment
  */
-public class NewestFragment extends AbsBaseFragment {
+public class NewestFragment extends AbsBaseFragment implements OnRefreshListener {
     /**
      * Listview
      */
     private String newestUrl = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
-    private ListView mListView;
+    private String reUrl = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l890560.json";
+    private RefreshListView mListView;
     private NewestListViewAdapter newestListViewAdapter;
     /**
+     * GVBB FV
      * 轮播图
      */
     private ViewPager viewPager;
@@ -43,6 +51,9 @@ public class NewestFragment extends AbsBaseFragment {
     private Handler handler;
     private boolean isRotate = false;
     private Runnable rotateRunnable;
+    private NewestListViewBean bean;
+    private List<NewestListViewBean.ResultBean.NewslistBean> newslist;
+    private NewestListViewBean.ResultBean.NewslistBean mBean;
 
     @Override
     protected int setLayout() {
@@ -58,6 +69,19 @@ public class NewestFragment extends AbsBaseFragment {
         newestListViewAdapter = new NewestListViewAdapter(context);
         newestRotateViewPagerAdapter = new NewestRotateViewPagerAdapter(context);
         mListView.setAdapter(newestListViewAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putString("key", "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n" + newslist.get(position - 2).getId() + "-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html");
+                bundle.putString("title", newslist.get(position - 2).getTitle());
+                bundle.putString("time", newslist.get(position - 2).getTime());
+                bundle.putString("replayCount", newslist.get(position - 2).getReplycount() + "");
+                bundle.putString("imgUrl", newslist.get(position - 2).getSmallpic());
+                goTo(context, NewestDetailsActivity.class, bundle);
+            }
+        });
+        mListView.setOnRefreshListener(this);
     }
 
     @Override
@@ -69,9 +93,9 @@ public class NewestFragment extends AbsBaseFragment {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
-                NewestListViewBean bean = gson.fromJson(resultStr, NewestListViewBean.class);
-                List<NewestListViewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
-                newestListViewAdapter.setDatas(datas);
+                bean = gson.fromJson(resultStr, NewestListViewBean.class);
+                newslist = bean.getResult().getNewslist();
+                newestListViewAdapter.setDatas(newslist);
             }
 
             @Override
@@ -202,4 +226,42 @@ public class NewestFragment extends AbsBaseFragment {
 
     }
 
+    @Override
+    public void onDownPullRefresh() {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                SystemClock.sleep(2000);
+                VolleyInstance.getmInstance().startRequest(newestUrl, new VolleyResult() {
+                    @Override
+                    public void success(String resultStr) {
+                        Gson gson = new Gson();
+                        bean = gson.fromJson(resultStr, NewestListViewBean.class);
+                        newslist = bean.getResult().getNewslist();
+                        newestListViewAdapter.setDatas(newslist);
+                    }
+
+                    @Override
+                    public void failure() {
+                    }
+                });
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+//                super.onPostExecute(aVoid);
+                newestRotateViewPagerAdapter.notifyDataSetChanged();
+                mListView.hideHeaderView();
+
+            }
+        }.execute(new Void[]{});
+
+    }
+
+    @Override
+    public void onLoadingMore() {
+
+    }
 }

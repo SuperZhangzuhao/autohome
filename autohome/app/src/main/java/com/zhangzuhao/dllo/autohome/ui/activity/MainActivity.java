@@ -39,8 +39,13 @@ public class MainActivity extends AbsBaseActivity {
         findRb = (RadioButton) findViewById(R.id.find_rb);
         meRb = (RadioButton) findViewById(R.id.me_rb);
         radioGroup = (RadioGroup) findViewById(R.id.main_rg);
+        if (recommendRb.isChecked()){
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.main_fl, new RecommendFragment());
+        }
 
-
+       getSupportFragmentManager().beginTransaction().replace(R.id.main_fl , new RecommendFragment()).commit();
         /**
          * GadioGroup的点击事件 , 替换占位布局
          */
@@ -69,6 +74,7 @@ public class MainActivity extends AbsBaseActivity {
                 ft.commit();
             }
         });
+
     }
 
     @Override

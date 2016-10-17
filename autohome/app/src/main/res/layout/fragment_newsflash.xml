@@ -17,7 +17,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.6"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -25,6 +25,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2sp"
                     android:text="全部品牌" />
 
                 <ImageView
@@ -32,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/newsflash_top_bandtv"
                     android:src="@mipmap/zhankai" />
 
@@ -41,13 +44,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
                     android:layout_toRightOf="@id/newsflash_top_levelimg"
-                    android:text="全部级别" />
+                    android:text="全部级别"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2sp"/>
 
                 <ImageView
                     android:id="@+id/newsflash_top_bandimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/newsflash_top_leveltv"
                     android:src="@mipmap/zhankai" />
             </RelativeLayout>

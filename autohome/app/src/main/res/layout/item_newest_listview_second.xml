@@ -1,93 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <!--行布局内是三个图片的-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center_vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
         <TextView
             android:id="@+id/item_newest_listview_second_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试"
-            android:textSize="15sp"
             android:layout_marginLeft="10dp"
-            android:textColor="#8E8E8E"/>
+            android:text="测试"
+            android:textColor="#8E8E8E"
+            android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/item_newest_listview_second_imgleft"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/item_newest_listview_second_imgmidlle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/item_newest_listview_second_imgright"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center_vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
         <TextView
             android:id="@+id/item_newest_listview_second_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2016-05-05"
             android:layout_marginLeft="10dp"
-            />
+            android:text="2016-05-05" />
+
         <TextView
             android:id="@+id/newest_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="浏览"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:text="浏览" />
+
         <TextView
             android:id="@+id/item_newest_listview_second_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5313"
             android:layout_toLeftOf="@id/newest_tv"
-            />
+            android:text="5313" />
     </RelativeLayout>
 </LinearLayout>

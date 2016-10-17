@@ -1,52 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/boutique_drawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <!--精品推荐布局页面-->
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:background="#EBEBEB"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="8">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/boutique_recycler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#EBEBEB"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center_vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/boutique_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#EBEBEB"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/boutique_menuimg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/caidan32" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E3E3E3" />
+
+                <ListView
+                    android:id="@+id/boutique_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="#E3E3E3"
+                    android:dividerHeight="1dp" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="#EBEBEB"
-            android:layout_weight="1">
-            <ImageView
-                android:id="@+id/boutique_menuimg"
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/caidan32"/>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="10">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E3E3E3"/>
+                android:layout_centerInParent="true"
+                android:text="选择排序"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/drawer_depreciate_closetv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="关闭"
+                android:textColor="#0472e1"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#BEBEBE" />
+        </RelativeLayout>
+
         <ListView
-            android:id="@+id/boutique_listview"
-            android:layout_width="match_parent"
-            android:divider="#E3E3E3"
-            android:dividerHeight="1dp"
-            android:layout_height="match_parent"/>
+            android:id="@+id/drawer_boutique_listview"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:divider="#BEBEBE"
+            android:dividerHeight="1dp" />
     </LinearLayout>
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

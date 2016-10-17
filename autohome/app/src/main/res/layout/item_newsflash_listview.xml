@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="全新奥迪A4上市快报"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -66,11 +66,13 @@
                     android:id="@+id/newsflash_listview_item_reviewcount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1234567" />
+                    android:text="1234567"
+                    android:textSize="10sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="10sp"
                     android:text="人浏览" />
             </LinearLayout>
 
@@ -89,12 +91,10 @@
                     android:id="@+id/newsflash_listview_item_createTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2016.19.19" />
+                    android:text="2016.19.19"
+                    android:textSize="10sp"/>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+
     </LinearLayout>
 </LinearLayout>

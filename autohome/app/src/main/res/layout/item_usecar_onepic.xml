@@ -10,7 +10,9 @@
         <ImageView
             android:id="@+id/usecar_listview_onepic_img"
             android:layout_width="match_parent"
+            android:layout_margin="10dp"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             />
     </LinearLayout>
     <LinearLayout
@@ -42,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:textSize="10sp"
                 android:text="2016-09-09"
                 />
             <TextView
@@ -51,6 +54,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:text="评论"
+                android:textSize="10sp"
                 android:layout_alignParentRight="true"
                 />
             <TextView
@@ -59,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="2314"
+                android:textSize="10sp"
                 android:layout_toLeftOf="@id/usecar_talk"/>
 
         </RelativeLayout>

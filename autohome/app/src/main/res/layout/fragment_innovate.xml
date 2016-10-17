@@ -3,27 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
+
+    <RelativeLayout
+        android:id="@+id/innovate_popup_relative"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <Spinner
-            android:id="@+id/innovate_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/showtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="优创"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/zhankaixiangxia" />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="11">
-        <ListView
+
+        <com.zhangzuhao.dllo.autohome.view.RefreshListView
             android:id="@+id/innovate_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:dividerHeight="1dp"
-            android:divider="#BEBEBE"/>
+            android:divider="#BEBEBE"
+            android:dividerHeight="1dp" />
     </LinearLayout>
-
-
 </LinearLayout>

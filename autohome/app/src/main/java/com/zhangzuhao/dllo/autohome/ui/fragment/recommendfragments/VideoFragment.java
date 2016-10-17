@@ -1,9 +1,11 @@
 package com.zhangzuhao.dllo.autohome.ui.fragment.recommendfragments;
 
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,6 +16,8 @@ import com.zhangzuhao.dllo.autohome.model.bean.VideoDrawerListViewBean;
 import com.zhangzuhao.dllo.autohome.model.bean.VideoListViewBean;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyInstance;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyResult;
+import com.zhangzuhao.dllo.autohome.ui.activity.NewestDetailsActivity;
+import com.zhangzuhao.dllo.autohome.ui.activity.VideoDetailsActivity;
 import com.zhangzuhao.dllo.autohome.ui.adapter.VideoDrawerListViewAdapter;
 import com.zhangzuhao.dllo.autohome.ui.adapter.VideoListViewAdapter;
 import com.zhangzuhao.dllo.autohome.ui.app.AutoHomeApp;
@@ -27,8 +31,8 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  * 视频页面的Fragment
  */
-public class VideoFragment extends AbsBaseFragment {
-    private TextView titleTv, timeTv, playCountTv, allTv;
+public class VideoFragment extends AbsBaseFragment implements AdapterView.OnItemClickListener {
+    private TextView titleTv, timeTv, playCountTv, allTv , closeDrawer;
     private ImageView smallImg;
     private ListView listView;
     private VideoListViewAdapter adapter;
@@ -39,6 +43,7 @@ public class VideoFragment extends AbsBaseFragment {
     private DrawerLayout drawerlayout;
     private VideoDrawerListViewAdapter drawerAdapter;
     private List<VideoDrawerListViewBean> drawerlist;
+    private List<VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2> list;
 
     @Override
     protected int setLayout() {
@@ -58,10 +63,12 @@ public class VideoFragment extends AbsBaseFragment {
          * 抽屉相关的初始化以及绑定数据
          */
         allTv = byView(R.id.video_quanbutv);
+        closeDrawer = byView(R.id.drawer_depreciate_closetv);
         drawerlayout = byView(R.id.video_drawer);
         drawerListView = byView(R.id.drawer_video_listview);
         drawerAdapter = new VideoDrawerListViewAdapter(context);
         drawerListView.setAdapter(drawerAdapter);
+
         /**
          * 构造抽屉的数据
          */
@@ -70,6 +77,28 @@ public class VideoFragment extends AbsBaseFragment {
          * 点击"全部"打开抽屉
          */
         clickOpenDrawer();
+        /**
+         * listview的点击事件
+         */
+        listView.setOnItemClickListener(this);
+        /**
+         * 抽屉关闭文字的点击事件
+         */
+        closeDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerlayout.closeDrawer(Gravity.RIGHT);
+            }
+        });
+        /**
+         * 抽屉的ListView的点击事件
+         */
+        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("VideoFragment", "抽屉点击事件");
+            }
+        });
     }
 
     private void createDrawerDatas() {
@@ -109,17 +138,25 @@ public class VideoFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 VideoListViewBean videoListViewBean = gson.fromJson(resultStr, VideoListViewBean.class);
-                List<VideoListViewBean.VideoListViewBeanChild1.VideoListViewBeanChild2> datas = videoListViewBean.getResult().getList();
-                datas.get(0).getTitle();
-                datas.get(1).getTime();
-                datas.get(2).getPlaycount();
-                datas.get(3).getSmallimg();
-                adapter.setDatas(datas);
+                list = videoListViewBean.getResult().getList();
+                list.get(0).getTitle();
+                list.get(1).getTime();
+                list.get(2).getPlaycount();
+                list.get(3).getSmallimg();
+                adapter.setDatas(list);
             }
 
             @Override
             public void failure() {
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("key" , "http://v.autohome.com.cn/v-"+list.get(position).getId()+".html");
+        Log.d("VideoFragment", "bundle:" + bundle);
+        goTo(context , VideoDetailsActivity.class  , bundle);
     }
 }

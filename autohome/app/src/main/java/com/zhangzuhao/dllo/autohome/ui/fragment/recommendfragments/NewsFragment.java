@@ -1,6 +1,8 @@
 package com.zhangzuhao.dllo.autohome.ui.fragment.recommendfragments;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -10,6 +12,7 @@ import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.model.bean.NewsListViewBean;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyInstance;
 import com.zhangzuhao.dllo.autohome.model.net.VolleyResult;
+import com.zhangzuhao.dllo.autohome.ui.activity.NewestDetailsActivity;
 import com.zhangzuhao.dllo.autohome.ui.adapter.NewsListViewAdapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.AbsBaseFragment;
 
@@ -18,12 +21,13 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/10.
  */
-public class NewsFragment extends AbsBaseFragment {
+public class NewsFragment extends AbsBaseFragment implements AdapterView.OnItemClickListener {
     private TextView titleTv, timeTv, replyTv;
     private ImageView smallpic;
     private ListView listView;
     private NewsListViewAdapter newsListViewAdapter;
     private String newsUrl = "http://app.api.autohome.com.cn/autov5.0.0/news/newslist-pm1-c0-nt1-p1-s30-l0.json";
+    private List<NewsListViewBean.ResultBean.NewslistBean> datas;
 
     @Override
     protected int setLayout() {
@@ -39,7 +43,10 @@ public class NewsFragment extends AbsBaseFragment {
         listView = byView(R.id.news_listview);
         newsListViewAdapter = new NewsListViewAdapter(context);
         listView.setAdapter(newsListViewAdapter);
-
+        /**
+         * listview的点击事件
+         */
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -55,7 +62,7 @@ public class NewsFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 NewsListViewBean newsListViewBean = gson.fromJson(resultStr, NewsListViewBean.class);
-                List<NewsListViewBean.ResultBean.NewslistBean> datas = newsListViewBean.getResult().getNewslist();
+                datas = newsListViewBean.getResult().getNewslist();
                 newsListViewAdapter.setDatas(datas);
             }
 
@@ -76,4 +83,10 @@ public class NewsFragment extends AbsBaseFragment {
         return fragment;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("key" , "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n"+datas.get(position).getId()+"-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html");
+        goTo(context , NewestDetailsActivity.class ,  bundle);
+    }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.model.bean.UseCarBean;
+import com.zhangzuhao.dllo.autohome.utils.ScreenSizeUtils;
 
 import java.util.List;
 

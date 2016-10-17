@@ -6,17 +6,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_innovate_listview_onepic_headimg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"/>
 
 
         <TextView
@@ -43,13 +43,13 @@
                android:id="@+id/item_innovate_listview_onepic_img"
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:layout_marginTop="10dp"
                android:layout_marginLeft="10dp"/>
        </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:background="#e2e2e2"
             android:layout_weight="1">
             <TextView
                 android:id="@+id/item_innovate_listview_onepic_title"
@@ -73,8 +73,11 @@
             android:id="@+id/item_innovate_listview_onepic_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="2016-05-05"
+            android:textSize="10sp"
             />
         <TextView
             android:id="@+id/item_innovate_listview_onepic_talkcount"
@@ -82,11 +85,16 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="23"
-            android:layout_alignParentRight="true"/>
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:textSize="10sp"/>
         <ImageView
             android:id="@+id/innovate_pinglunimg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_toLeftOf="@id/item_innovate_listview_onepic_talkcount"
             android:src="@mipmap/pinglun"/>
         <TextView
@@ -94,12 +102,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_toLeftOf="@id/innovate_pinglunimg"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            android:textSize="10sp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/zan"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_toLeftOf="@id/item_innovate_listview_onepic_zancount"/>
 
     </RelativeLayout>

@@ -53,7 +53,7 @@ public class InnvotateSpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(R.layout.item_spinner_innovate, null);
+        convertView = inflater.inflate(R.layout.popup_innvoate, null);
         if (convertView != null) {
             TextView textView = (TextView) convertView.findViewById(R.id.item_innovate_spinner_tv);
             textView.setText(datas.get(position).getStr());

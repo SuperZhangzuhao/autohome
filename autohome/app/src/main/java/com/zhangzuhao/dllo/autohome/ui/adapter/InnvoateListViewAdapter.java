@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.model.bean.InnvoateListViewBean;
+import com.zhangzuhao.dllo.autohome.utils.ScreenSizeUtils;
 
 import java.util.List;
 
@@ -120,7 +121,8 @@ public class InnvoateListViewAdapter extends BaseAdapter {
                     oneHolder.oneTimeTv.setText(mBean.getPublishtime());
                     oneHolder.onePraiseTv.setText(mBean.getPraisenum()+"");
                     oneHolder.oneReplayTv.setText(mBean.getReplycount()+"");
-                    Picasso.with(context).load(mBean.getUserpic()).into(oneHolder.oneHeadImg);
+                    Picasso.with(context).load(mBean.getUserpic()).resize(ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.WIDTH)/14 ,
+                            ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.HEIGHT)/14).into(oneHolder.oneHeadImg);
                     Picasso.with(context).load(mBean.getThumbnailpics().get(0)).into(oneHolder.oneThumbnailImg);
 
                     break;
@@ -141,8 +143,10 @@ public class InnvoateListViewAdapter extends BaseAdapter {
                     bigHolder.bigPraiseTv.setText(mBean.getPraisenum()+"");
                     bigHolder.bigTimeTv.setText(mBean.getPublishtime());
                     bigHolder.bigReplayTv.setText(mBean.getReplycount()+"");
-                    Picasso.with(context).load(mBean.getUserpic()).into(bigHolder.bigHeadImg);
-                    Picasso.with(context).load(mBean.getThumbnailpics().get(0)).into(bigHolder.bigImg);
+                    Picasso.with(context).load(mBean.getUserpic()).resize(ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.WIDTH)/14 ,
+                            ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.HEIGHT)/14).into(bigHolder.bigHeadImg);
+                    Picasso.with(context).load(mBean.getThumbnailpics().get(0)).resize(ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.WIDTH)/1 ,
+                            ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.HEIGHT)/3).into(bigHolder.bigImg);
             }
         }
 

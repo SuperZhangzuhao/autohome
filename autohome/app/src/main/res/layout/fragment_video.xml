@@ -60,6 +60,32 @@
         android:layout_gravity="right"
         android:background="#fff"
         android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择排序"
+                android:textSize="15sp"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/drawer_depreciate_closetv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关闭"
+                android:textSize="15sp"
+                android:textColor="#0472e1"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BEBEBE"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
         <ListView
             android:id="@+id/drawer_video_listview"
             android:layout_width="240dp"

@@ -1,6 +1,7 @@
 package com.zhangzuhao.dllo.autohome.ui.adapter;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import com.squareup.picasso.Picasso;
 import com.zhangzuhao.dllo.autohome.R;
 import com.zhangzuhao.dllo.autohome.model.bean.NewestListViewBean;
 import com.zhangzuhao.dllo.autohome.model.bean.NewsListViewBean;
+import com.zhangzuhao.dllo.autohome.utils.ScreenSizeUtils;
+import com.zhangzuhao.dllo.autohome.view.OnRefreshListener;
 
 import java.util.List;
 
@@ -21,7 +24,7 @@ import java.util.List;
  * Created by dllo on 16/9/19.
  * 最新界面的ListView的适配器
  */
-public class NewestListViewAdapter extends BaseAdapter {
+public class NewestListViewAdapter extends BaseAdapter  {
     private List<NewestListViewBean.ResultBean.NewslistBean> datas;
     private Context context;
 
@@ -37,7 +40,10 @@ public class NewestListViewAdapter extends BaseAdapter {
      * 有三个图片的行布局
      */
     private static final int TYPE_THREEIMG = 2;
-//    private NewestListViewBean.ResultBean.NewslistBean mBean ;
+    private NewestListViewBean.ResultBean.NewslistBean mbean;
+    private RotateHolder holder;
+    private OnePicHolder oneHolder;
+    //    private NewestListViewBean.ResultBean.NewslistBean mBean ;
 
     public NewestListViewAdapter(Context context) {
         this.context = context;
@@ -85,8 +91,8 @@ public class NewestListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        RotateHolder holder = null;
-        OnePicHolder oneHolder = null;
+        holder = null;
+        oneHolder = null;
         ThreePicHolder threeHolder = null;
         int type = getItemViewType(position);
         if (convertView == null) {
@@ -120,7 +126,7 @@ public class NewestListViewAdapter extends BaseAdapter {
             }
         }
 
-        NewestListViewBean.ResultBean.NewslistBean mbean = datas.get(position);
+        mbean = datas.get(position);
         Log.d("xxxxxx", "mbean:" + mbean);
         if (mbean != null) {
             switch (type) {
@@ -130,7 +136,8 @@ public class NewestListViewAdapter extends BaseAdapter {
                     oneHolder.titleTv.setText(mbean.getTitle());
                     oneHolder.timeTv.setText(mbean.getTime());
                     oneHolder.countTv.setText(mbean.getReplycount() + "");
-                    Picasso.with(context).load(mbean.getSmallpic()).into(oneHolder.smallImg);
+                    Picasso.with(context).load(mbean.getSmallpic()).resize(ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.WIDTH)/8 ,
+                            ScreenSizeUtils.getScreenSize(context , ScreenSizeUtils.ScreenState.HEIGHT)/10).into(oneHolder.smallImg);
                     break;
                 case TYPE_THREEIMG:
                     threeHolder.tTitleTv.setText(mbean.getTitle());
@@ -143,6 +150,7 @@ public class NewestListViewAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
 
     /**
      * 轮播图行布局

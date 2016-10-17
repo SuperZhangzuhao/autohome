@@ -1,10 +1,14 @@
 package com.zhangzuhao.dllo.autohome.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.zhangzuhao.dllo.autohome.R;
+import com.zhangzuhao.dllo.autohome.ui.activity.ForumSearchActivity;
 import com.zhangzuhao.dllo.autohome.ui.adapter.vpadapter.ForumVpAdapter;
 import com.zhangzuhao.dllo.autohome.ui.fragment.forumfragment.BoutiqueFragment;
 import com.zhangzuhao.dllo.autohome.ui.fragment.forumfragment.HotpostFragment;
@@ -22,6 +26,7 @@ public class ForumFragment extends AbsBaseFragment {
     private ViewPager forumVp;
     private ForumVpAdapter forumVpAdapter;
     private List<Fragment>fragments;
+    private ImageView searchImg;
     @Override
     protected int setLayout() {
         return R.layout.fragment_forum;
@@ -31,9 +36,17 @@ public class ForumFragment extends AbsBaseFragment {
     protected void initViews() {
         forumTl = byView(R.id.forum_tl);
         forumVp = byView(R.id.forum_vp);
+        searchImg = byView(R.id.forum_img);
 
+        searchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("key" ,"s");
+                goTo(context , ForumSearchActivity.class  , bundle);
+            }
+        });
     }
-
     @Override
     protected void initDatas() {
         fragments = new ArrayList<>();

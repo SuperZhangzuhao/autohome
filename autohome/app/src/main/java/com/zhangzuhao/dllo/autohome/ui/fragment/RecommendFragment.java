@@ -49,9 +49,15 @@ public class RecommendFragment extends AbsBaseFragment {
         fragments.add(new VideoFragment());
         fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov5.0.0/news/newslist-pm1-c0-nt1-p1-s30-l0.json"));
         fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt3-p1-s30-l0.json"));
-        fragments.add(new PriceFragment());
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c110100-nt2-p1-s30-l0.json"));
         fragments.add(new UseCarFragment());
         fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt102-p1-s30-l0.json"));
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt97-p1-s30-l0.json"));
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt107-p1-s30-l0.json"));
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt100-p1-s30-l0.json"));
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/videolist-pm1-vt8-s30-lastid0.json"));
+        fragments.add(NewsFragment.newInstance("http://app.api.autohome.com.cn/autov4.8.8/news/shuokelist-pm1-s30-lastid0.json"));
+
         recomVpAdapter = new RecommendVpAdapter(getChildFragmentManager() ,fragments);
         recommendVp.setAdapter(recomVpAdapter);
         recommendTl.setupWithViewPager(recommendVp);
@@ -66,11 +72,11 @@ public class RecommendFragment extends AbsBaseFragment {
         recommendTl.getTabAt(6).setText("行情");
         recommendTl.getTabAt(7).setText("用车");
         recommendTl.getTabAt(8).setText("技术");
-//        recommendTl.getTabAt(9).setText("文化");
-//        recommendTl.getTabAt(10).setText("改装");
-//        recommendTl.getTabAt(11).setText("游记");
-//        recommendTl.getTabAt(12).setText("原创视频");
-//        recommendTl.getTabAt(13).setText("说客");
+        recommendTl.getTabAt(9).setText("文化");
+        recommendTl.getTabAt(10).setText("改装");
+        recommendTl.getTabAt(11).setText("游记");
+        recommendTl.getTabAt(12).setText("原创视频");
+        recommendTl.getTabAt(13).setText("说客");
 
     }
 }

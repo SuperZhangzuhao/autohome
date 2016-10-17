@@ -18,13 +18,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
+                android:orientation="vertical"
                 android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="立即登入,体验更多"
-                    android:textSize="25sp" />
+                    android:text="立即登入 , 体验更多"/>
 
             </LinearLayout>
 
@@ -41,6 +41,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
+                        android:id="@+id/me_identer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -54,6 +55,7 @@
                         android:background="#E3E3E3" />
 
                     <ImageButton
+                        android:id="@+id/me_weiboenter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -67,11 +69,12 @@
                         android:background="#E3E3E3" />
 
                     <ImageButton
+                        android:id="@+id/me_wechatenter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:src="@mipmap/weixin" />
+                        android:src="@mipmap/qq" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -99,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="微信登入" />
+                        android:text="QQ登入" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -179,6 +182,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/me_mycollect"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="50"
@@ -351,7 +355,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="50"
                         android:gravity="center_vertical"
-                        android:text="草稿箱"
+                        android:text="设置"
                         android:textSize="20sp" />
 
                     <View
